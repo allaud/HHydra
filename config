@@ -1,0 +1,2 @@
+ab    <Path /new/ab =~>     [http://a.ru, http://b.ru]
+jr    <Path locale=en =~>   [http://en.ru]
