@@ -19,7 +19,7 @@ cell = do
        name <- word
        ws
        char '<'
-       rule <- rule
+       rule <- cells
        char '>'
        ws
        char '['
@@ -27,6 +27,10 @@ cell = do
        char ']'
        return (name, rule, hs)
 
+rule_line = do
+  rules <- cells
+  --let clean_rules = map (\(Right t) -> t) rules
+  return (rules)
 
 {-main :: IO ()
 main = do

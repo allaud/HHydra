@@ -16,6 +16,6 @@ remainingCells =
 
 cellContent = do
   many (oneOf " ")
-  host <- many (noneOf ",[]()")
+  host <- many (noneOf ",;[]()<>")
   many (oneOf " ")
   return (host)
