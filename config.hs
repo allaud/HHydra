@@ -29,14 +29,4 @@ cell = do
 
 rule_line = do
   rules <- cells
-  --let clean_rules = map (\(Right t) -> t) rules
   return (rules)
-
-{-main :: IO ()
-main = do
-    --let rules = ["ab ! [http://asd.ru, http://bsd.ru]","bc  ! [http://asd.ru, http://bsd.ru]"]
-    contents <- readFile "config"
-    let rules = lines contents
-    print $ map (\rule -> parse cell "" rule) rules
-
--}

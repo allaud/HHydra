@@ -19,8 +19,3 @@ cellContent = do
   host <- many (noneOf ",[]()")
   many (oneOf " ")
   return (host)
-
-
-{-main :: IO ()
-main = do
-    print $ parse cells "" " http://a.ru,  http://b.ru, http://c.ru"-}
