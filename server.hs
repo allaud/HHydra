@@ -18,7 +18,7 @@ instance Show Response where
     200 -> "OK"
     302 -> "Found"
     404 -> "Not Found") ++ "\r\n" ++ (
-    "Server: Microsoft-IIS/7.5\r\n" ++
+    "Server: HHydra beta\r\n" ++
     "Content-Length: 0\r\n" ++
     "Location: " ++ location(r) ++ "\r\n" ++
     "\r\n\r\n"
