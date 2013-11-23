@@ -23,7 +23,7 @@ Configuration
 ======
 Each line of ./config file follows this rule:
 
-`NAME <EXPRESSION[;EXPRESSION...]> [ADDRESS[,ADDRESS...]]` 
+`NAME <EXPRESSION[,EXPRESSION...]> [ADDRESS[,ADDRESS...]]` 
 
 Where:
 
