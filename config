@@ -2,3 +2,4 @@ chr     <#{User-Agent} Chrome =~>                [http://chrome.ru]
 jr      <#{Path} locale=en =~>                   [http://jetradar.com]
 ab      <#{Path} /new/ab =~, #{Path} /new =~>    [http://a.search.aviasales.ru, http://b.search.aviasales.ru]
 zx      <#{Path} / =~>                           [http://ya.ru]
+

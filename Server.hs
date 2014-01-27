@@ -11,13 +11,13 @@ import Control.Arrow
 
 import Text.Printf
 
-data RequestType 
-    = GET 
-    | POST 
+data RequestType
+    = GET
+    | POST
 
     deriving (Show)
 
-data Request  = Request 
+data Request  = Request
     { rtype   :: RequestType
     , path    :: String
     , options :: [(String,String)]
@@ -25,24 +25,24 @@ data Request  = Request
 
     deriving Show
 
-data Response = Response 
+data Response = Response
     { version    :: String
     , statuscode :: Int
     , location   :: String
     }
 
 instance Show Response where
-  show r = format 
-      (       version    r) 
-      (show $ statuscode r) 
-      (       showCode   r) 
+  show r = format
+      (       version    r)
+      (show $ statuscode r)
+      (       showCode   r)
       (       location   r)
 
     where
       format = printf $ unlines
           [ "%s %s %s\r"
-          , "Server: HHydra beta\r" 
-          , "Content-Length: 0\r"   
+          , "Server: HHydra beta\r"
+          , "Content-Length: 0\r"
           , "Location: %s\r"
           , "\r"
           , "\r"
@@ -54,7 +54,7 @@ instance Show Response where
           302   -> "Found"
           404   -> "Not Found"
           other -> error $ "status code not supported: " ++ show other
-    
+
 
 fromString :: String -> RequestType
 fromString type_ = case type_ of
@@ -65,10 +65,10 @@ fromString type_ = case type_ of
 --- This should really validate input or something. Separate validator? Or as-we-go?
 parseRequest :: [String] -> Request
 parseRequest lns = case words $ head lns of
-    [t,p,_] -> Request 
+    [t,p,_] -> Request
         { rtype   = fromString t
         , path    = p
-        , options = parseOptions $ tail lns 
+        , options = parseOptions $ tail lns
         }
 
     other -> error $ "corrupted request: " ++ show other
@@ -76,4 +76,4 @@ parseRequest lns = case words $ head lns of
   where
     parseOptions :: [String] -> [(String,String)]
     parseOptions = takeWhile (':' `elem`) >>> map (break (== ' '))
-  
+

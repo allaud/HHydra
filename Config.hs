@@ -9,7 +9,7 @@ type Config     = [ConfigLine]
 type ConfigLine = (String, [String], [String])
 
 config :: Parser Config
-config = 
+config =
     ruleLine `sepEndBy` try (char '\n')
 
 ruleLine :: Parser ConfigLine
@@ -36,11 +36,11 @@ _parser `within` other =
     error $ "as second parameter, within must get 2 chars, but got: " ++ show (group other)
 
 commaSeparatedList :: Parser [String]
-commaSeparatedList = 
+commaSeparatedList =
     cellContent `sepBy` char ','
       <?> "comma separated list"
 
   where
     cellContent :: Parser String
-    cellContent = 
+    cellContent =
         spaces *> many (noneOf ",;[]()<>") <* spaces

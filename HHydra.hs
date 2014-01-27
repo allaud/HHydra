@@ -17,10 +17,10 @@ import Server
 import Tpl
 
 ruleEval :: String -> Bool
-ruleEval r = 
+ruleEval r =
     eval (r =~ "#\\{(.+)\\} +(.+) +(.+)" :: [[String]])
-  
-  where 
+
+  where
     eval ([[_, str, re, "=~"]]) = str =~ re :: Bool
     eval ([[_, str, re, "=="]]) = str == re :: Bool
     eval  other                 = error $ "misshapen config rule: " ++ show other
@@ -34,13 +34,13 @@ randomItem xs = (xs !!) `fmap` randomRIO (0, length xs - 1)
 respond :: Request -> Handle -> String -> IO ()
 respond request handle redirect_host = do
   print request
-  
-  let response = Response 
+
+  let response = Response
         { version    = "HTTP/1.1"
         , statuscode = 302
         , location   = redirect_host
         }
-  
+
   hPutStr handle $ show response
 
 handleAccept :: Handle -> String -> [(String, [String], [String])] -> IO ()
@@ -58,16 +58,16 @@ handleAccept handle _hostname rules = do
   let (Just ((_, _, arr), _)) = find snd $ zip rules $ map rulesEval t_rules
 
   redirect_host <- randomItem arr
-  
+
   respond request handle redirect_host
-  
+
   return ()
 
 main :: IO ()
 main = withSocketsDo $ do
   sock     <- listenOn $ PortNumber 9000
   contents <- readFile "config"
-  
+
   case parse config "config" contents of
       Left  err   -> print err
       Right rules -> do
