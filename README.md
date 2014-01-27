@@ -49,5 +49,7 @@ How to make a sandbox:
     cabal install
 
     HHydra
+    
+(add ~/.cabal/bin to your $PATH to run it w/o prefix)
 
 Look http://www.haskell.org/cabal/users-guide/ for more info.
