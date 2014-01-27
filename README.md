@@ -11,11 +11,11 @@ How to run HHydra
 ======
 1. Compile it:
     
-    ghc -o main main.hs
+    cabal install
   
 2. Run it: 
     
-    ./main
+    HHydra
     
 HHydra listens to port 9000 by default and uses ./config file for configuration.
 
@@ -39,3 +39,17 @@ Config example
     jr      <#{Path} locale=en =~>                   [http://jetradar.com]
     ab      <#{Path} /new/ab =~, #{Path} /new =~>    [http://a.search.aviasales.ru, http://b.search.aviasales.ru]
     zx      <#{Path} / =~>                           [http://ya.ru]
+
+For Develoment
+======
+How to make a sandbox:
+
+    cabal sandbox init
+    cabal install --only-dependencies
+    cabal install
+
+    HHydra
+    
+(add ~/.cabal/bin to your $PATH to run it w/o prefix)
+
+Look http://www.haskell.org/cabal/users-guide/ for more info.
