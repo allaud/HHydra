@@ -50,4 +50,4 @@ How to make a sandbox:
 
     HHydra
 
-    Look http://www.haskell.org/cabal/users-guide/ for more info.
+Look http://www.haskell.org/cabal/users-guide/ for more info.
